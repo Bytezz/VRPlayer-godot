@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://scrna6vfbbxr"]
+
+[ext_resource type="Texture2D" uid="uid://3u7mrnk6dbc5" path="res://UI/settings.svg" id="1_k554x"]
+[ext_resource type="Script" path="res://UI/UI.gd" id="1_ohwt0"]
+[ext_resource type="Texture2D" uid="uid://cmxlqqiuk6e2m" path="res://UI/open.svg" id="2_68yev"]
+[ext_resource type="Texture2D" uid="uid://dr3yqi7p5juut" path="res://UI/hide.svg" id="2_tiwgq"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_ohwt0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_top = 0.882716
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_right = 80
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.392157)
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Settings_btn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Settings"
+icon = ExtResource("1_k554x")
+
+[node name="Open_btn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Open"
+icon = ExtResource("2_68yev")
+
+[node name="VR_btn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "VR"
+
+[node name="3DVR_btn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "3DVR"
+
+[node name="Normal_btn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Normal"
+
+[node name="Gyro_btn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Gyro"
+
+[node name="Hide_btn" type="Button" parent="MarginContainer/ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Hide"
+icon = ExtResource("2_tiwgq")
+
+[connection signal="pressed" from="MarginContainer/ColorRect/MarginContainer/HBoxContainer/Open_btn" to="." method="_on_open_btn_pressed"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmivlqhocobdu"]
+
+[ext_resource type="Script" path="res://addons/safe_area_rect/safe_area_rect.gd" id="1_ikj5e"]
+[ext_resource type="Script" path="res://Viewer/Viewer.gd" id="1_oh8sq"]
+[ext_resource type="PackedScene" uid="uid://scrna6vfbbxr" path="res://UI/UI.tscn" id="2_24lkb"]
+[ext_resource type="PackedScene" uid="uid://bbcyudt3jtki4" path="res://Viewer/SphereViewer.tscn" id="2_cxfxr"]
+
+[node name="Viewer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oh8sq")
+
+[node name="SafeAreaRect" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ikj5e")
+
+[node name="EyesContainer" type="HBoxContainer" parent="SafeAreaRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Eye" type="SubViewportContainer" parent="SafeAreaRect/EyesContainer" groups=["eyes"]]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SafeAreaRect/EyesContainer/Eye"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="SphereViewer" parent="SafeAreaRect/EyesContainer/Eye/SubViewport" instance=ExtResource("2_cxfxr")]
+
+[node name="UI" parent="SafeAreaRect" instance=ExtResource("2_24lkb")]

@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtipsy1sygrbx"]
+
+[ext_resource type="Script" path="res://PlayerUI/PlayerUI.gd" id="1_tkgal"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_t1dw5"]
+size = Vector2(1.2, 0.12)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ufc25"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cv4dv"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_ufc25")
+
+[node name="PlayerUI" type="Node3D"]
+script = ExtResource("1_tkgal")
+
+[node name="UI" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19658, -0.442051)
+mesh = SubResource("QuadMesh_t1dw5")
+surface_material_override/0 = SubResource("StandardMaterial3D_cv4dv")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1000, 100)
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="1HBoxContainer" type="HBoxContainer" parent="SubViewport/MarginContainer"]
+layout_mode = 2
+
+[node name="playpause_btn" type="Button" parent="SubViewport/MarginContainer/1HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Play/Pause"
+
+[node name="timeline" type="HSlider" parent="SubViewport/MarginContainer/1HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="time_label" type="Label" parent="SubViewport/MarginContainer/1HBoxContainer"]
+layout_mode = 2
+text = "00:00"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

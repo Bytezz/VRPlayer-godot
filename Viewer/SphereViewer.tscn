@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbcyudt3jtki4"]
+
+[ext_resource type="Script" path="res://Viewer/SphereViewer.gd" id="1_pys6w"]
+[ext_resource type="Script" path="res://Viewer/Player.gd" id="2_adst4"]
+[ext_resource type="Script" path="res://Viewer/BackCamera3D.gd" id="3_5s6dq"]
+[ext_resource type="VideoStream" path="res://Viewer/example.ogv" id="3_hhce5"]
+[ext_resource type="PackedScene" uid="uid://dtipsy1sygrbx" path="res://PlayerUI/PlayerUI.tscn" id="4_dx2h0"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jjj7m"]
+resource_local_to_scene = true
+radius = 1.0
+height = 2.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i5ex0"]
+viewport_path = NodePath("Sphere/Player")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhn6f"]
+resource_local_to_scene = true
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_i5ex0")
+uv1_scale = Vector3(-1, 1, 1)
+
+[node name="SphereViewer" type="Node3D"]
+script = ExtResource("1_pys6w")
+
+[node name="Sphere" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_jjj7m")
+surface_material_override/0 = SubResource("StandardMaterial3D_jhn6f")
+
+[node name="Player" type="SubViewport" parent="Sphere"]
+handle_input_locally = false
+render_target_update_mode = 4
+script = ExtResource("2_adst4")
+
+[node name="Picture" type="TextureRect" parent="Sphere/Player"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Sphere/Player"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("3_hhce5")
+autoplay = true
+expand = true
+
+[node name="Camera3D" type="Camera3D" parent="." groups=["camera"]]
+
+[node name="BackCamera3D" type="Camera3D" parent="Camera3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, -1, 0, 8.74228e-08, 0, 1, 0, 0, 0)
+top_level = true
+script = ExtResource("3_5s6dq")
+
+[node name="PlayerUI" parent="." instance=ExtResource("4_dx2h0")]
+visible = false

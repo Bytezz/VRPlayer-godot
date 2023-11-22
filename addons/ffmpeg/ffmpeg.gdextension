@@ -1,0 +1,57 @@
+[configuration]
+
+entry_symbol = "ffmpeg_init"
+compatibility_minimum = 4.1
+
+[libraries]
+windows.debug.x86_64 = "res://addons/ffmpeg/win64/libgdffmpeg.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "res://addons/ffmpeg/win64/libgdffmpeg.windows.template_release.x86_64.dll"
+linux.debug.x86_64 = "res://addons/ffmpeg/linux64/libgdffmpeg.linux.template_debug.x86_64.so"
+linux.release.x86_64 = "res://addons/ffmpeg/linux64/libgdffmpeg.linux.template_release.x86_64.so"
+android.debug.armeabi-v7a = "res://addons/ffmpeg/android-armeabi-v7a/.so"
+android.release.armeabi-v7a = "res://addons/ffmpeg/android-armeabi-v7a/.so"
+android.debug.arm64-v8a = "res://addons/ffmpeg/android-arm64-v8a/.so"
+android.release.arm64-v8a = "res://addons/ffmpeg/android-arm64-v8a/.so"
+
+[dependencies]
+
+windows.x86_64 = 
+    {"res://addons/ffmpeg/win64/avcodec-60.dll": "",
+    "res://addons/ffmpeg/win64/avfilter-9.dll": "",
+    "res://addons/ffmpeg/win64/avformat-60.dll": "",
+    "res://addons/ffmpeg/win64/avutil-58.dll": "",
+    "res://addons/ffmpeg/win64/swresample-4.dll": "",
+    "res://addons/ffmpeg/win64/swscale-7.dll": ""}
+
+linux.x86_64 = 
+    {"res://addons/ffmpeg/linux64/libavcodec.so.60": "",
+    "res://addons/ffmpeg/linux64/libavfilter.so.9": "",
+    "res://addons/ffmpeg/linux64/libavformat.so.60": "",
+    "res://addons/ffmpeg/linux64/libavutil.so.58": "",
+    "res://addons/ffmpeg/linux64/libswresample.so.4": "",
+    "res://addons/ffmpeg/linux64/libswscale.so.7": ""}
+
+android.armeabi-v7a =
+    {"res://addons/ffmpeg/android-armeabi-v7a/libavcodec.so": "",
+    "res://addons/ffmpeg/android-armeabi-v7a/libavcodec_neon.so": "",
+    "res://addons/ffmpeg/android-armeabi-v7a/libavdevice.so": "",
+    "res://addons/ffmpeg/android-armeabi-v7a/libavdevice_neon.so": "",
+    "res://addons/ffmpeg/android-armeabi-v7a/libavfilter.so": "",
+    "res://addons/ffmpeg/android-armeabi-v7a/libavfilter_neon.so": "",
+    "res://addons/ffmpeg/android-armeabi-v7a/libavformat.so": "",
+    "res://addons/ffmpeg/android-armeabi-v7a/libavformat_neon.so": "",
+    "res://addons/ffmpeg/android-armeabi-v7a/libavutil.so": "",
+    "res://addons/ffmpeg/android-armeabi-v7a/libavutil_neon.so": "",
+    "res://addons/ffmpeg/android-armeabi-v7a/libswresample.so": "",
+    "res://addons/ffmpeg/android-armeabi-v7a/libswresample_neon.so": "",
+    "res://addons/ffmpeg/android-armeabi-v7a/libswscale.so": "",
+    "res://addons/ffmpeg/android-armeabi-v7a/libswscale_neon.so": ""}
+
+android.arm64-v8a =
+    {"res://addons/ffmpeg/android-arm64-v8a/libavcodec.so": "",
+    "res://addons/ffmpeg/android-arm64-v8a/libavdevice.so": "",
+    "res://addons/ffmpeg/android-arm64-v8a/libavfilter.so": "",
+    "res://addons/ffmpeg/android-arm64-v8a/libavformat.so": "",
+    "res://addons/ffmpeg/android-arm64-v8a/libavutil.so": "",
+    "res://addons/ffmpeg/android-arm64-v8a/libswresample.so": "",
+    "res://addons/ffmpeg/android-arm64-v8a/libswscale.so": ""}
